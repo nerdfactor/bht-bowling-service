@@ -2,11 +2,9 @@ package eu.nerdfactor.bowling.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
 public class MainController {
 
 	/**
@@ -15,7 +13,7 @@ public class MainController {
 	 *
 	 * @return ResponseEntity with HTTP 200.
 	 */
-	@GetMapping
+	@GetMapping(value = {"", "/", "/api", "/api/v1"})
 	public ResponseEntity<?> index() {
 		return ResponseEntity.ok().build();
 	}
@@ -25,7 +23,7 @@ public class MainController {
 	 *
 	 * @return ResponseEntity with HTTP 200 and basic status info.
 	 */
-	@GetMapping("/status")
+	@GetMapping("/api/v1/status")
 	public ResponseEntity<?> status() {
 		return ResponseEntity.ok("{\"status\":true}");
 	}

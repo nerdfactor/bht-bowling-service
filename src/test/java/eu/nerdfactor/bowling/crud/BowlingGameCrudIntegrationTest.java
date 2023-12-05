@@ -1,8 +1,8 @@
 package eu.nerdfactor.bowling.crud;
 
-import eu.nerdfactor.bowling.entity.Game;
-import eu.nerdfactor.bowling.repo.GameRepository;
-import eu.nerdfactor.bowling.service.GameCrudService;
+import eu.nerdfactor.bowling.entity.BowlingGame;
+import eu.nerdfactor.bowling.repo.BowlingGameRepository;
+import eu.nerdfactor.bowling.service.BowlingGameCrudService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,69 +14,66 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Test for database integration of {@link Game} CRUD operations.
+ * Test for database integration of {@link BowlingGame} CRUD operations.
  */
 @SpringBootTest
-public class GameCrudIntegrationTest {
+public class BowlingGameCrudIntegrationTest {
 
 	@Autowired
-	GameCrudService gameCrudService;
+	BowlingGameCrudService gameCrudService;
 
 	/**
-	 * Setup by deleting all existing {@link Game Games} and creating on specific {@link Game} that
+	 * Setup by deleting all existing {@link BowlingGame Games} and creating on specific {@link BowlingGame} that
 	 * can be tested for.
 	 *
 	 * @param gameRepository A repository implementation for data access.
 	 */
 	@BeforeAll
-	public static void setUp(@Autowired GameRepository gameRepository) {
+	public static void setUp(@Autowired BowlingGameRepository gameRepository) {
 		gameRepository.deleteAll();
-		gameRepository.save(new Game());
+		gameRepository.save(new BowlingGame());
 	}
 
 	/**
-	 * Check if a {@link Game} can be created.
+	 * Check if a {@link BowlingGame} can be created.
 	 */
 	@Test
 	@Transactional
 	@Rollback
 	public void gameCanBeCreated() {
-		Game prepared = new Game();
-		Game created = this.gameCrudService.createGame(prepared);
+		BowlingGame prepared = new BowlingGame();
+		BowlingGame created = this.gameCrudService.createGame(prepared);
 		Assertions.assertNotNull(created);
 		Assertions.assertNotEquals(0, created.getId());
 	}
 
 	/**
-	 * Check if a {@link Game} can be read.
+	 * Check if a {@link BowlingGame} can be read.
 	 */
 	@Test
 	@Transactional
 	@Rollback
 	public void gameCanBeRead() {
-		Game read = this.gameCrudService.readGame(1).orElseThrow();
+		BowlingGame read = this.gameCrudService.readGame(1).orElseThrow();
 		Assertions.assertNotNull(read);
 		Assertions.assertEquals(1, read.getId());
 	}
 
 	/**
-	 * Check if a {@link Game} can be updated.
+	 * Check if a {@link BowlingGame} can be updated.
 	 */
 	@Test
 	@Transactional
 	@Rollback
 	public void gameCanBeUpdated() {
-		int testScore = 100;
-		Game prepared = new Game();
-		prepared.setId(1);
-		prepared.setCurrentScore(testScore);
-		Game updated = this.gameCrudService.updateGame(prepared);
+		BowlingGame prepared = BowlingGame.createTestGame(1, 100);
+		BowlingGame updated = this.gameCrudService.updateGame(prepared);
 		Assertions.assertNotNull(updated);
 		Assertions.assertEquals(prepared.getCurrentScore(), updated.currentScore);
 	}
 
 	/**
-	 * Check if a {@link Game} can be deleted.
+	 * Check if a {@link BowlingGame} can be deleted.
 	 */
 	@Test
 	@Transactional
@@ -89,13 +86,13 @@ public class GameCrudIntegrationTest {
 	}
 
 	/**
-	 * Check if {@link Game Games} can be listed.
+	 * Check if {@link BowlingGame Games} can be listed.
 	 */
 	@Test
 	@Transactional
 	@Rollback
 	public void gamesCanBeListed() {
-		List<Game> allGames = this.gameCrudService.listGames();
+		List<BowlingGame> allGames = this.gameCrudService.listGames();
 		Assertions.assertEquals(1, allGames.size());
 	}
 

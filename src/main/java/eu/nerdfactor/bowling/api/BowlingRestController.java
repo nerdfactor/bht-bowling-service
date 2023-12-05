@@ -1,7 +1,7 @@
 package eu.nerdfactor.bowling.api;
 
-import eu.nerdfactor.bowling.entity.Game;
-import eu.nerdfactor.bowling.service.GameCrudService;
+import eu.nerdfactor.bowling.entity.BowlingGame;
+import eu.nerdfactor.bowling.service.BowlingGameCrudService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,32 +13,32 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/games")
+@RequestMapping("/api/v1/bowling")
 @RequiredArgsConstructor
-public class GameRestController {
+public class BowlingRestController {
 
-	private final GameCrudService gameCrudService;
+	private final BowlingGameCrudService gameCrudService;
 
 	@GetMapping
-	public ResponseEntity<List<Game>> listGames() {
+	public ResponseEntity<List<BowlingGame>> listGames() {
 		return ResponseEntity.ok(this.gameCrudService.listGames());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Game> readGame(@PathVariable int id) {
-		Optional<Game> read = this.gameCrudService.readGame(id);
+	public ResponseEntity<BowlingGame> readGame(@PathVariable int id) {
+		Optional<BowlingGame> read = this.gameCrudService.readGame(id);
 		return ResponseEntity.of(read);
 	}
 
 	@PostMapping
-	public ResponseEntity<Game> createGame(@RequestBody Game game) {
-		Game created = this.gameCrudService.createGame(game);
+	public ResponseEntity<BowlingGame> createGame(@RequestBody BowlingGame game) {
+		BowlingGame created = this.gameCrudService.createGame(game);
 		return ResponseEntity.ok(created);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Game> updateGame(@PathVariable int id, @RequestBody Game game) {
-		Game updated = this.gameCrudService.updateGame(game);
+	public ResponseEntity<BowlingGame> updateGame(@PathVariable int id, @RequestBody BowlingGame game) {
+		BowlingGame updated = this.gameCrudService.updateGame(game);
 		return ResponseEntity.ok(updated);
 	}
 

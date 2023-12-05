@@ -1,6 +1,6 @@
 package eu.nerdfactor.bowling.repo;
 
-import eu.nerdfactor.bowling.entity.Game;
+import eu.nerdfactor.bowling.entity.BowlingGame;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Repository for data access to a database.
  */
 @Repository
-public interface GameRepository extends JpaRepository<Game, Integer> {
+public interface BowlingGameRepository extends JpaRepository<BowlingGame, Integer> {
 }

@@ -1,5 +1,8 @@
 package eu.nerdfactor.bowling.service;
 
+/**
+ * Ruleset for a bowling game. Defines game rules and checks.
+ */
 public interface BowlingRuleset {
 
 	/**

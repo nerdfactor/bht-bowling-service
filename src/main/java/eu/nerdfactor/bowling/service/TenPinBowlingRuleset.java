@@ -2,6 +2,9 @@ package eu.nerdfactor.bowling.service;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * An ruleset implementation for ten pin bowling.
+ */
 @Component
 public class TenPinBowlingRuleset implements BowlingRuleset {
 

@@ -3,13 +3,32 @@ package eu.nerdfactor.bowling.service;
 import eu.nerdfactor.bowling.entity.BowlingGame;
 import org.springframework.stereotype.Component;
 
+/**
+ * A strategy implementation for scoring a ten pin bowling game.
+ */
 @Component
 public class TenPinBowlingScoring implements ScoringStrategy {
 
+	/**
+	 * The score {@link BowlingGame}.
+	 */
 	private BowlingGame game;
 
+	/**
+	 * The {@link BowlingRuleset} used during scoring.
+	 */
 	private BowlingRuleset ruleset;
 
+	/**
+	 * Calculates the score for a {@link BowlingGame} using a specified {@link BowlingRuleset}.
+	 * It will check every frame for strikes, spares or open frames and count their score
+	 * accordingly. an be called multiple times during the game and provides the correct
+	 * score for the current game state.
+	 *
+	 * @param game    The {@link BowlingGame} to score.
+	 * @param ruleset The {@link BowlingRuleset} use for scoring.
+	 * @return The total score.
+	 */
 	@Override
 	public int countScore(BowlingGame game, BowlingRuleset ruleset) {
 		this.game = game;

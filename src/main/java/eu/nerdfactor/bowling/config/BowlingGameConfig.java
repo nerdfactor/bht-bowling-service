@@ -10,9 +10,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+/**
+ * Bowling game configurations.
+ */
 @Configuration
 public class BowlingGameConfig {
 
+	/**
+	 * Create a ten pin bowling game service with corresponding ruleset
+	 * and scoring strategy.
+	 *
+	 * @param gameRepository An implementation of repository for data access.
+	 * @return A BowlingService for ten pin bowling.
+	 */
 	@Bean
 	@Primary
 	@Qualifier("TenPinBowling")

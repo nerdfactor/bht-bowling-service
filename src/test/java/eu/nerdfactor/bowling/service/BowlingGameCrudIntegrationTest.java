@@ -1,8 +1,7 @@
-package eu.nerdfactor.bowling.crud;
+package eu.nerdfactor.bowling.service;
 
 import eu.nerdfactor.bowling.entity.BowlingGame;
 import eu.nerdfactor.bowling.repo.BowlingGameRepository;
-import eu.nerdfactor.bowling.service.BowlingGameCrudService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

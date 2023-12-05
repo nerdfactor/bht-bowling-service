@@ -30,7 +30,7 @@ public class BowlingGameCrudIntegrationTest {
 	@BeforeAll
 	public static void setUp(@Autowired BowlingGameRepository gameRepository) {
 		gameRepository.deleteAll();
-		gameRepository.save(new BowlingGame());
+		gameRepository.save(BowlingGame.createTestGame(1, 100));
 	}
 
 	/**

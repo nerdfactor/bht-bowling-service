@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -51,7 +53,7 @@ public class BowlingControllerTest {
 	public static void setUp(@Autowired BowlingGameRepository gameRepository) {
 		gameRepository.deleteAll();
 		gameRepository.save(BowlingGame.createTestGame(1, 0));
-		gameRepository.save(BowlingGame.createTestGame(2, 21, new int[]{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 10, 3, 2}));
+		gameRepository.save(BowlingGame.createTestGame(2, 21, List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 10, 3, 2)));
 
 	}
 
@@ -60,7 +62,7 @@ public class BowlingControllerTest {
 	 */
 	@Test
 	public void rollsCanBeAddedToGame() throws Exception {
-		BowlingGame mockGame = BowlingGame.createTestGame(1, 1, new int[]{5});
+		BowlingGame mockGame = BowlingGame.createTestGame(1, 1, List.of(5));
 		Mockito.when(bowlingService.addNextRoll(anyInt(), anyInt()))
 				.thenReturn(mockGame);
 
@@ -74,7 +76,7 @@ public class BowlingControllerTest {
 	 */
 	@Test
 	public void scoreOfGameCanBeCounted() throws Exception {
-		BowlingGame mockGame = BowlingGame.createTestGame(2, 69, 21, new int[]{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 10, 3, 2});
+		BowlingGame mockGame = BowlingGame.createTestGame(2, 69, 21, List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 10, 3, 2));
 		Mockito.when(bowlingService.calculateCurrentScore(anyInt()))
 				.thenReturn(mockGame);
 

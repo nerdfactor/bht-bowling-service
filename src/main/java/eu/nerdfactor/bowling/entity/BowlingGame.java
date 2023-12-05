@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * A simple game of bowling.
  */
@@ -31,7 +33,8 @@ public class BowlingGame {
 	 * never exceed the maximum amount of rolls.
 	 */
 	@Column(name = "knocked_pins")
-	private int[] knockedOverPinsPerRoll;
+	@ElementCollection
+	private List<Integer> knockedOverPinsPerRoll;
 
 	/**
 	 * The current score for this {@link BowlingGame}.
@@ -50,7 +53,7 @@ public class BowlingGame {
 	 * @param knockedOverPins The amount of pins that where knocked over in the roll.
 	 */
 	public void nextRoll(int knockedOverPins) {
-		this.knockedOverPinsPerRoll[this.currentRoll] = knockedOverPins;
+		this.knockedOverPinsPerRoll.set(this.currentRoll, knockedOverPins);
 		this.currentRoll++;
 	}
 
@@ -62,7 +65,7 @@ public class BowlingGame {
 	 * @throws IndexOutOfBoundsException If the specified roll is not within the possible amount of rolls.
 	 */
 	public int getKnockedOverPinsOfRoll(int roll) throws IndexOutOfBoundsException {
-		return this.knockedOverPinsPerRoll[roll];
+		return this.knockedOverPinsPerRoll.get(roll);
 	}
 
 	/**
@@ -75,7 +78,7 @@ public class BowlingGame {
 	 * @return True if the knockedOverPins is a strike.
 	 */
 	public boolean isRollAStrike(int roll, BowlingRuleset ruleset) {
-		return this.knockedOverPinsPerRoll[roll] == ruleset.amountOfPins();
+		return this.knockedOverPinsPerRoll.get(roll) == ruleset.amountOfPins();
 	}
 
 	/**
@@ -88,7 +91,7 @@ public class BowlingGame {
 	 * @return True if the roll is a spare.
 	 */
 	public boolean isRollASpare(int roll, BowlingRuleset ruleset) {
-		return this.knockedOverPinsPerRoll[roll] + this.knockedOverPinsPerRoll[roll + 1] == ruleset.amountOfPins();
+		return this.knockedOverPinsPerRoll.get(roll) + this.knockedOverPinsPerRoll.get(roll + 1) == ruleset.amountOfPins();
 	}
 
 	public static BowlingGame createTestGame(int id, int score) {
@@ -99,7 +102,7 @@ public class BowlingGame {
 		return game;
 	}
 
-	public static BowlingGame createTestGame(int id, int currentRoll, int[] knockedOverPinsPerRoll) {
+	public static BowlingGame createTestGame(int id, int currentRoll, List<Integer> knockedOverPinsPerRoll) {
 		// todo: just needed for tests. won't be needed after introducing DTO?
 		BowlingGame game = new BowlingGame();
 		game.id = id;
@@ -108,7 +111,7 @@ public class BowlingGame {
 		return game;
 	}
 
-	public static BowlingGame createTestGame(int id, int score, int currentRoll, int[] knockedOverPinsPerRoll) {
+	public static BowlingGame createTestGame(int id, int score, int currentRoll, List<Integer> knockedOverPinsPerRoll) {
 		// todo: just needed for tests. won't be needed after introducing DTO?
 		BowlingGame game = new BowlingGame();
 		game.id = id;

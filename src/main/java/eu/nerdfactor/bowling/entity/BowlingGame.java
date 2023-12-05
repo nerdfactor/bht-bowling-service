@@ -36,7 +36,7 @@ public class BowlingGame {
 	/**
 	 * The current score for this {@link BowlingGame}.
 	 */
-	public int currentScore;
+	private int currentScore;
 
 	public void dangerouslyOverrideCurrentScore(int score) {
 		this.currentScore = score;

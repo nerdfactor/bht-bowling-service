@@ -68,7 +68,7 @@ public class BowlingGameCrudIntegrationTest {
 		BowlingGame prepared = BowlingGame.createTestGame(1, 100);
 		BowlingGame updated = this.gameCrudService.updateGame(prepared);
 		Assertions.assertNotNull(updated);
-		Assertions.assertEquals(prepared.getCurrentScore(), updated.currentScore);
+		Assertions.assertEquals(prepared.getCurrentScore(), updated.getCurrentScore());
 	}
 
 	/**

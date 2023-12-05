@@ -1,10 +1,12 @@
 package eu.nerdfactor.bowling.entity;
 
+import eu.nerdfactor.bowling.config.KnockedOverPinsConvert;
 import eu.nerdfactor.bowling.service.BowlingRuleset;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,8 +35,8 @@ public class BowlingGame {
 	 * never exceed the maximum amount of rolls.
 	 */
 	@Column(name = "knocked_pins")
-	@ElementCollection
-	private List<Integer> knockedOverPinsPerRoll;
+	@Convert(converter = KnockedOverPinsConvert.class)
+	private List<Integer> knockedOverPinsPerRoll = new ArrayList<>();
 
 	/**
 	 * The current score for this {@link BowlingGame}.
@@ -53,7 +55,7 @@ public class BowlingGame {
 	 * @param knockedOverPins The amount of pins that where knocked over in the roll.
 	 */
 	public void nextRoll(int knockedOverPins) {
-		this.knockedOverPinsPerRoll.set(this.currentRoll, knockedOverPins);
+		this.knockedOverPinsPerRoll.add(knockedOverPins);
 		this.currentRoll++;
 	}
 

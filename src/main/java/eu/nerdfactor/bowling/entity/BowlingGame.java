@@ -98,4 +98,23 @@ public class BowlingGame {
 		game.currentScore = score;
 		return game;
 	}
+
+	public static BowlingGame createTestGame(int id, int currentRoll, int[] knockedOverPinsPerRoll) {
+		// todo: just needed for tests. won't be needed after introducing DTO?
+		BowlingGame game = new BowlingGame();
+		game.id = id;
+		game.currentRoll = currentRoll;
+		game.knockedOverPinsPerRoll = knockedOverPinsPerRoll;
+		return game;
+	}
+
+	public static BowlingGame createTestGame(int id, int score, int currentRoll, int[] knockedOverPinsPerRoll) {
+		// todo: just needed for tests. won't be needed after introducing DTO?
+		BowlingGame game = new BowlingGame();
+		game.id = id;
+		game.currentScore = score;
+		game.currentRoll = currentRoll;
+		game.knockedOverPinsPerRoll = knockedOverPinsPerRoll;
+		return game;
+	}
 }

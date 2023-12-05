@@ -16,7 +16,7 @@ public class TenPinBowlingRuleset implements BowlingRuleset {
 	 */
 	@Override
 	public int amountOfMaxRolls() {
-		return 20;
+		return 21;
 	}
 
 	/**

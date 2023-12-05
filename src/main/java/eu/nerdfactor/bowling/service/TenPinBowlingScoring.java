@@ -36,10 +36,10 @@ public class TenPinBowlingScoring implements ScoringStrategy {
 		int currentScore = 0;
 		int checkedRoll = 0;
 		for (int frame = 0; frame < ruleset.amountOfFrames(); frame++) {
-			if (game.isRollAStrike(currentScore, ruleset)) {
+			if (game.isRollAStrike(checkedRoll, ruleset)) {
 				currentScore += countScoreForStrike(checkedRoll);
 				checkedRoll++;
-			} else if (game.isRollASpare(currentScore, ruleset)) {
+			} else if (game.isRollASpare(checkedRoll, ruleset)) {
 				currentScore += countScoreForSpare(checkedRoll);
 				checkedRoll += 2;
 			} else {

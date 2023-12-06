@@ -30,18 +30,11 @@ tasks.test {
 	useJUnitPlatform()
 }
 
-
-/*apply {
-	from("secrets.gradle")
-}
-val sonarqubeToken: String by project
-sonar {
-	properties {
-		property("sonar.host.url", "https://sonar.nrdfctr.app")
-		property("sonar.projectKey", "bowling-service")
-		property("sonar.login", sonarqubeToken)
+tasks{
+	test{
+		useJUnitPlatform()
+	}
+	bootBuildImage{
+		imageName = "nerdfactor/bowling-service"
 	}
 }
-tasks {
-	named("build").get().dependsOn("sonar")
-}*/

@@ -23,7 +23,7 @@ public class MainController {
 	 *
 	 * @return ResponseEntity with HTTP 200 and basic status info.
 	 */
-	@GetMapping("/api/v1/status")
+	@GetMapping(value = "/api/v1/status", produces = "application/json")
 	public ResponseEntity<String> status() {
 		return ResponseEntity.ok("{\"status\":true}");
 	}

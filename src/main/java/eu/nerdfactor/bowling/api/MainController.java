@@ -14,7 +14,7 @@ public class MainController {
 	 * @return ResponseEntity with HTTP 200.
 	 */
 	@GetMapping(value = {"", "/", "/api", "/api/v1"})
-	public ResponseEntity<?> index() {
+	public ResponseEntity<Void> index() {
 		return ResponseEntity.ok().build();
 	}
 
@@ -24,7 +24,7 @@ public class MainController {
 	 * @return ResponseEntity with HTTP 200 and basic status info.
 	 */
 	@GetMapping("/api/v1/status")
-	public ResponseEntity<?> status() {
+	public ResponseEntity<String> status() {
 		return ResponseEntity.ok("{\"status\":true}");
 	}
 }

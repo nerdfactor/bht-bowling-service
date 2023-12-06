@@ -3,6 +3,7 @@ plugins {
 	id("org.springframework.boot") version "3.2.0"
 	id("io.spring.dependency-management") version "1.1.4"
 	id("io.freefair.lombok") version "8.4"
+	id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "eu.nerdfactor"
@@ -22,8 +23,25 @@ dependencies {
 	testImplementation(platform("org.junit:junit-bom:5.9.1"))
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.test {
 	useJUnitPlatform()
+}
+
+
+apply {
+	from("secrets.gradle")
+}
+val sonarqubeToken: String by project
+sonar {
+	properties {
+		property("sonar.host.url", "https://sonar.nrdfctr.app")
+		property("sonar.projectKey", "bowling-service")
+		property("sonar.login", sonarqubeToken)
+	}
+}
+tasks {
+	named("build").get().dependsOn("sonar")
 }

@@ -34,6 +34,9 @@ tasks{
 	test{
 		useJUnitPlatform()
 	}
+	bootJar{
+		archiveFileName = "bowling-service.jar"
+	}
 	bootBuildImage{
 		imageName = "ghcr.io/nerdfactor/bowling-service"
 	}

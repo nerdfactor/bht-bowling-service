@@ -7,7 +7,7 @@ on:
 name: Docker Workflow
 
 jobs:
-  sonarqube:
+  docker:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

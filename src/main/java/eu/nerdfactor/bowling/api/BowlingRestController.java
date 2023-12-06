@@ -43,7 +43,7 @@ public class BowlingRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteGame(@PathVariable int id) {
+	public ResponseEntity<Void> deleteGame(@PathVariable int id) {
 		this.gameCrudService.deleteGameById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

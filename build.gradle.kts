@@ -35,6 +35,6 @@ tasks{
 		useJUnitPlatform()
 	}
 	bootBuildImage{
-		imageName = "nerdfactor/bowling-service"
+		imageName = "ghcr.io/nerdfactor/bowling-service"
 	}
 }

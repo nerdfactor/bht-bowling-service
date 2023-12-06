@@ -31,7 +31,7 @@ tasks.test {
 }
 
 
-apply {
+/*apply {
 	from("secrets.gradle")
 }
 val sonarqubeToken: String by project
@@ -44,4 +44,4 @@ sonar {
 }
 tasks {
 	named("build").get().dependsOn("sonar")
-}
+}*/

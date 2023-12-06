@@ -1,13 +1,7 @@
 on:
-  # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
     branches:
       - main
-      - master
-      - develop
-      - 'releases/**'
-  pull_request:
-      types: [opened, synchronize, reopened]
 
 name: Sonarqube Workflow
 jobs:
@@ -16,7 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        # Disabling shallow clones is recommended for improving the relevancy of reporting
         fetch-depth: 0
     - name: Set up JDK
       uses: actions/setup-java@v4

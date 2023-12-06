@@ -44,3 +44,4 @@ bin/
 
 /.idea/
 /secrets.gradle
+/secrets.properties

@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BowlingControllerTest {
+class BowlingControllerTest {
 
 	private static final String API_PATH = "/api/v1/bowling";
 
@@ -61,7 +61,7 @@ public class BowlingControllerTest {
 	 * Check if a roll can be added to a {@link BowlingGame}.
 	 */
 	@Test
-	public void rollsCanBeAddedToGame() throws Exception {
+	void rollsCanBeAddedToGame() throws Exception {
 		BowlingGame mockGame = BowlingGame.createTestGame(1, 1, List.of(5));
 		Mockito.when(bowlingService.addNextRoll(anyInt(), anyInt()))
 				.thenReturn(mockGame);
@@ -75,7 +75,7 @@ public class BowlingControllerTest {
 	 * Check if the score for a {@link BowlingGame} can be counted.
 	 */
 	@Test
-	public void scoreOfGameCanBeCounted() throws Exception {
+	void scoreOfGameCanBeCounted() throws Exception {
 		BowlingGame mockGame = BowlingGame.createTestGame(2, 69, 21, List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 10, 3, 2));
 		Mockito.when(bowlingService.calculateCurrentScore(anyInt()))
 				.thenReturn(mockGame);

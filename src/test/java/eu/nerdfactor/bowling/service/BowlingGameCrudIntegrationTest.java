@@ -16,7 +16,7 @@ import java.util.List;
  * Test for database integration of {@link BowlingGame} CRUD operations.
  */
 @SpringBootTest
-public class BowlingGameCrudIntegrationTest {
+class BowlingGameCrudIntegrationTest {
 
 	@Autowired
 	BowlingGameCrudService gameCrudService;
@@ -38,7 +38,7 @@ public class BowlingGameCrudIntegrationTest {
 	@Test
 	@Transactional
 	@Rollback
-	public void gameCanBeCreated() {
+	void gameCanBeCreated() {
 		BowlingGame prepared = new BowlingGame();
 		BowlingGame created = this.gameCrudService.createGame(prepared);
 		Assertions.assertNotNull(created);
@@ -51,7 +51,7 @@ public class BowlingGameCrudIntegrationTest {
 	@Test
 	@Transactional
 	@Rollback
-	public void gameCanBeRead() {
+	void gameCanBeRead() {
 		BowlingGame read = this.gameCrudService.readGame(1).orElseThrow();
 		Assertions.assertNotNull(read);
 		Assertions.assertEquals(1, read.getId());
@@ -63,7 +63,7 @@ public class BowlingGameCrudIntegrationTest {
 	@Test
 	@Transactional
 	@Rollback
-	public void gameCanBeUpdated() {
+	void gameCanBeUpdated() {
 		BowlingGame prepared = BowlingGame.createTestGame(2, 100);
 		BowlingGame updated = this.gameCrudService.updateGame(prepared);
 		Assertions.assertNotNull(updated);
@@ -76,7 +76,7 @@ public class BowlingGameCrudIntegrationTest {
 	@Test
 	@Transactional
 	@Rollback
-	public void gameCanBeDeleted() {
+	void gameCanBeDeleted() {
 		this.gameCrudService.deleteGameById(1);
 		Assertions.assertThrows(Throwable.class, () -> {
 			this.gameCrudService.readGame(1).orElseThrow();
@@ -89,7 +89,7 @@ public class BowlingGameCrudIntegrationTest {
 	@Test
 	@Transactional
 	@Rollback
-	public void gamesCanBeListed() {
+	void gamesCanBeListed() {
 		List<BowlingGame> allGames = this.gameCrudService.listGames();
 		Assertions.assertFalse(allGames.isEmpty());
 	}

@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MainControllerTest {
+class MainControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -21,7 +21,7 @@ public class MainControllerTest {
 	 * Check if the status response can be loaded from the api.
 	 */
 	@Test
-	public void applicationStatusCanBeRequested() throws Exception {
+	void applicationStatusCanBeRequested() throws Exception {
 		mockMvc.perform(get("/api/v1/status"))
 				.andExpect(status().isOk())
 				.andExpect(content().json("{\"status\":true}"));

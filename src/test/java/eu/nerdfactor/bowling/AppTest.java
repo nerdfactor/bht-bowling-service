@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * Basic Application tests.
  */
 @SpringBootTest
-public class AppTest {
+class AppTest {
 
 
 	/**

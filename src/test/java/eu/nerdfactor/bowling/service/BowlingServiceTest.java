@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 @SpringBootTest
-public class BowlingServiceTest {
+class BowlingServiceTest {
 
 	@MockBean
 	BowlingGameRepository bowlingGameRepository;
@@ -31,7 +31,7 @@ public class BowlingServiceTest {
 	BowlingService bowlingService;
 
 	@BeforeEach
-	public void setUpMockRepository() {
+	void setUpMockRepository() {
 		Mockito.when(bowlingGameRepository.save(any()))
 				.then(AdditionalAnswers.returnsFirstArg());
 	}

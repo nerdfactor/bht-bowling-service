@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BowlingRestControllerTest {
+class BowlingRestControllerTest {
 
 	private static final String API_PATH = "/api/v1/bowling";
 
@@ -50,7 +50,7 @@ public class BowlingRestControllerTest {
 	 * Check if {@link BowlingGame Games} can be listed.
 	 */
 	@Test
-	public void gamesCanBeListed() throws Exception {
+	void gamesCanBeListed() throws Exception {
 		List<BowlingGame> mockGames = Arrays.asList(
 				BowlingGame.createTestGame(1, 10),
 				BowlingGame.createTestGame(2, 10)
@@ -67,7 +67,7 @@ public class BowlingRestControllerTest {
 	 * Check if a {@link BowlingGame} can be created.
 	 */
 	@Test
-	public void gameCanBeCreated() throws Exception {
+	void gameCanBeCreated() throws Exception {
 		BowlingGame mockGame = BowlingGame.createTestGame(1, 10);
 		Mockito.when(gameCrudService.createGame(any(BowlingGame.class)))
 				.thenReturn(mockGame);
@@ -83,7 +83,7 @@ public class BowlingRestControllerTest {
 	 * Check if a {@link BowlingGame} can be read.
 	 */
 	@Test
-	public void gameCanBeRead() throws Exception {
+	void gameCanBeRead() throws Exception {
 		BowlingGame mockGame = BowlingGame.createTestGame(1, 10);
 		Mockito.when(gameCrudService.readGame(any(int.class)))
 				.thenReturn(Optional.of(mockGame));
@@ -97,7 +97,7 @@ public class BowlingRestControllerTest {
 	 * Check if a {@link BowlingGame} can be updated.
 	 */
 	@Test
-	public void gameCanBeUpdated() throws Exception {
+	void gameCanBeUpdated() throws Exception {
 		BowlingGame mockGame = BowlingGame.createTestGame(1, 100);
 		Mockito.when(gameCrudService.updateGame(argThat(argument -> argument.getId() == mockGame.getId())))
 				.thenReturn(mockGame);
@@ -113,7 +113,7 @@ public class BowlingRestControllerTest {
 	 * Check if a {@link BowlingGame} can be deleted.
 	 */
 	@Test
-	public void gameCanBeDeleted() throws Exception {
+	void gameCanBeDeleted() throws Exception {
 		mockMvc.perform(delete(API_PATH + "/1"))
 				.andExpect(status().is(HttpStatus.NO_CONTENT.value()));
 	}

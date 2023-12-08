@@ -26,6 +26,11 @@ public interface BowlingRuleset {
 	int amountOfPins();
 
 	/**
+	 * The maximum score that can be achieved.
+	 */
+	int amountOfMaxScore();
+
+	/**
 	 * Check if the amount of knocked over pins is not possible.
 	 * todo: may require a full game for more specific checks?
 	 *

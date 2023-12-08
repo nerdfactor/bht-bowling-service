@@ -46,11 +46,19 @@ public class TenPinBowlingRuleset implements BowlingRuleset {
 	}
 
 	/**
+	 * The maximum score that can be achieved.
+	 */
+	public int amountOfMaxScore() {
+		return 300;
+	}
+
+	/**
 	 * Check if the amount of knocked over pins is not possible.
 	 *
 	 * @param knockedOverPins The amount of knocked over pins.
 	 * @return True if the amount of knocked over pins are not possible.
 	 */
+	@Override
 	public boolean wouldKnockOverWrongAmountOfPins(int knockedOverPins) {
 		return knockedOverPins < 0 || knockedOverPins > amountOfPins();
 	}
@@ -60,6 +68,7 @@ public class TenPinBowlingRuleset implements BowlingRuleset {
 	 *
 	 * @return True if the maximum amount is exceeded.
 	 */
+	@Override
 	public boolean wouldExceedMaxRolls(int roll) {
 		return roll >= amountOfMaxRolls();
 	}

@@ -1,6 +1,7 @@
 package eu.nerdfactor.bowling.config;
 
 import eu.nerdfactor.bowling.repo.BowlingGameRepository;
+import eu.nerdfactor.bowling.service.BowlingRuleset;
 import eu.nerdfactor.bowling.service.BowlingService;
 import eu.nerdfactor.bowling.service.TenPinBowlingRuleset;
 import eu.nerdfactor.bowling.service.TenPinBowlingScoring;
@@ -32,5 +33,17 @@ public class BowlingGameConfig {
 				new TenPinBowlingScoring(),
 				gameRepository
 		);
+	}
+
+	/**
+	 * Create a ten pin bowling ruleset.
+	 *
+	 * @return A BowlingRuleset for ten pin bowling.
+	 */
+	@Bean
+	@Primary
+	@Qualifier("TenPinBowling")
+	public BowlingRuleset getTenPinBowlingRuleset() {
+		return new TenPinBowlingRuleset();
 	}
 }

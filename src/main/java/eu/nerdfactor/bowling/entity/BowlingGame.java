@@ -2,9 +2,14 @@ package eu.nerdfactor.bowling.entity;
 
 import eu.nerdfactor.bowling.config.KnockedOverPinsConvert;
 import eu.nerdfactor.bowling.service.BowlingRuleset;
+import eu.nerdfactor.bowling.validation.MaxCurrentRolls;
+import eu.nerdfactor.bowling.validation.MaxPossibleScore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,7 @@ import java.util.List;
  */
 @Entity
 @Getter
+@Validated
 @NoArgsConstructor
 public class BowlingGame {
 
@@ -28,6 +34,8 @@ public class BowlingGame {
 	 * The roll this {@link BowlingGame} is on. Required to access the correct
 	 * array element in the knockedOverPins.
 	 */
+	@Min(0)
+	@MaxCurrentRolls
 	private int currentRoll;
 
 	/**
@@ -41,6 +49,8 @@ public class BowlingGame {
 	/**
 	 * The current score for this {@link BowlingGame}.
 	 */
+	@Min(0)
+	@MaxPossibleScore
 	private int currentScore;
 
 	public void dangerouslyOverrideCurrentScore(int score) {

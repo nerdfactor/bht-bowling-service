@@ -2,6 +2,7 @@ package eu.nerdfactor.bowling.api;
 
 import eu.nerdfactor.bowling.entity.BowlingGame;
 import eu.nerdfactor.bowling.service.BowlingGameCrudService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,13 +32,13 @@ public class BowlingRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<BowlingGame> createGame(@RequestBody BowlingGame game) {
+	public ResponseEntity<BowlingGame> createGame(@RequestBody @Valid BowlingGame game) {
 		BowlingGame created = this.gameCrudService.createGame(game);
 		return ResponseEntity.ok(created);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<BowlingGame> updateGame(@PathVariable int id, @RequestBody BowlingGame game) {
+	public ResponseEntity<BowlingGame> updateGame(@PathVariable int id, @RequestBody @Valid BowlingGame game) {
 		BowlingGame updated = this.gameCrudService.updateGame(game);
 		return ResponseEntity.ok(updated);
 	}

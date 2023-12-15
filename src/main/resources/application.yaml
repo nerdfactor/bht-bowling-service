@@ -19,3 +19,9 @@ spring:
     properties:
       hibernate:
         globally_quoted_identifiers: true
+springdoc:
+  swagger-ui:
+    try-it-out-enabled: false
+    path: /api/v1/swagger
+  api-docs:
+    path: /api/v1/docs

@@ -1,5 +1,7 @@
 package eu.nerdfactor.bowling.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.nerdfactor.bowling.dto.ApiStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,6 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class MainControllerTest {
 
 	@Autowired
+	ObjectMapper jsonMapper;
+
+	@Autowired
 	private MockMvc mockMvc;
 
 	/**
@@ -24,6 +29,6 @@ class MainControllerTest {
 	void applicationStatusCanBeRequested() throws Exception {
 		mockMvc.perform(get("/api/v1/status"))
 				.andExpect(status().isOk())
-				.andExpect(content().json("{\"status\":true}"));
+				.andExpect(content().json(this.jsonMapper.writeValueAsString(new ApiStatus())));
 	}
 }

@@ -2,6 +2,7 @@ package eu.nerdfactor.bowling.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 /**
  * Wrapper Object to transfer basic status information about
@@ -9,16 +10,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ApiStatus {
+public class ApiStatus extends RepresentationModel<ApiStatus> {
 
 	private boolean status = true;
 
 	// todo: get version from gradle build file?
 	private String version = "1.0.0";
-
-	private String mainUrl = "/api/v1";
-
-	private String docsUrl = "/api/v1/docs";
-
-	private String swaggerUrl = "/api/v1/swagger";
 }

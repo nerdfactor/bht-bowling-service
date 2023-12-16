@@ -13,7 +13,7 @@ public interface ScoringStrategy {
 	 * Count the score for a {@link BowlingGame} using a specified {@link BowlingRuleset}.
 	 *
 	 * @param game    The {@link BowlingGame} to score.
-	 * @param ruleset The {@link BowlingRuleset} use for scoring.
+	 * @param ruleset The {@link BowlingRuleset} used for scoring.
 	 * @return The total score.
 	 */
 	int countScore(BowlingGame game, BowlingRuleset ruleset);

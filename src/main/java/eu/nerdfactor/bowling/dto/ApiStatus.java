@@ -15,5 +15,5 @@ public class ApiStatus extends RepresentationModel<ApiStatus> {
 	private boolean status = true;
 
 	// todo: get version from gradle build file?
-	private String version = "1.0.0";
+	private String version = "1.2.0";
 }

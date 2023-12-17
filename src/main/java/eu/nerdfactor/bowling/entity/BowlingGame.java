@@ -83,7 +83,6 @@ public class BowlingGame {
 	/**
 	 * Check if a knockedOverPins is a strike.
 	 * A strike is a knockedOverPins that knocks over all pins at once.
-	 * todo: move into ruleset?
 	 *
 	 * @param roll    The knockedOverPins that should be checked.
 	 * @param ruleset The {@link BowlingRuleset} to be checked against.
@@ -96,7 +95,6 @@ public class BowlingGame {
 	/**
 	 * Check if a roll is a spare.
 	 * A spare is a roll where both rolls of a frame knock over all pins.
-	 * todo: move into ruleset?
 	 *
 	 * @param roll    The roll that should be checked.
 	 * @param ruleset The {@link BowlingRuleset} to be checked against.

@@ -22,7 +22,7 @@ public class TenPinBowlingScoring implements ScoringStrategy {
 	/**
 	 * Calculates the score for a {@link BowlingGame} using a specified {@link BowlingRuleset}.
 	 * It will check every frame for strikes, spares or open frames and count their score
-	 * accordingly. an be called multiple times during the game and provides the correct
+	 * accordingly. Can be called multiple times during the game and provides the correct
 	 * score for the current game state.
 	 *
 	 * @param game    The {@link BowlingGame} to score.
